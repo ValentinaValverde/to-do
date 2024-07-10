@@ -1,7 +1,5 @@
 // Jul 9, 2024
-// used ToDo1 file as reference
-// heavily relied on it too, whoops
-// also this is 0 styling
+// heavily relied on ToDo1 file
 
 import { useState } from 'react';
 
@@ -19,15 +17,12 @@ export default function ToDoTwo() {
 
     const value = event?.target.value;
 
-    if (event?.target.value === '') {
-      alert('please type something');
-      alert('another clue!');
-    } else {
-      setItemList(value);
+    // alert('please type something');
+    // alert('another clue!');
+    setItemList(value);
 
-      setItemList([inputValue, ...itemList]);
-      setInputValue(' ');
-    }
+    setItemList([inputValue, ...itemList]);
+    setInputValue(' ');
   };
 
   const clearList = () => {
@@ -36,14 +31,18 @@ export default function ToDoTwo() {
 
   return (
     <div>
-      <p>to do list!</p>
+      <p style={{ textAlign: 'center' }}>to do list!</p>
 
       <form>
         <input type="text" onChange={onChange} value={inputValue} />
-        <button onClick={onSubmit}>submit</button>
       </form>
 
-      <div>
+      <div
+        style={{
+          margin: 20,
+          maxWidth: 100,
+        }}
+      >
         {itemList.map((item, i) => (
           <div key={i}>
             <input type="checkbox" />
@@ -52,6 +51,7 @@ export default function ToDoTwo() {
         ))}
       </div>
 
+      <button onClick={onSubmit}>submit</button>
       <button onClick={clearList}>clear</button>
     </div>
   );
